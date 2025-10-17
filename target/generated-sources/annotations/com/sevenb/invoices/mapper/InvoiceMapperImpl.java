@@ -6,7 +6,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-10-16T21:03:25-0300",
+    date = "2025-10-16T21:14:11-0300",
     comments = "version: 1.6.2, compiler: javac, environment: Java 17.0.15 (Ubuntu)"
 )
 public class InvoiceMapperImpl implements InvoiceMapper {
