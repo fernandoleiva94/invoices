@@ -6,7 +6,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-10-16T21:14:11-0300",
+    date = "2025-10-24T12:45:12-0300",
     comments = "version: 1.6.2, compiler: javac, environment: Java 17.0.15 (Ubuntu)"
 )
 public class InvoiceMapperImpl implements InvoiceMapper {
@@ -24,6 +24,8 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         invoice.setNumber( invoiceDto.getNumber() );
         invoice.setDate( invoiceDto.getDate() );
         invoice.setEngraved( invoiceDto.getEngraved() );
+        invoice.setEngraved105( invoiceDto.getEngraved105() );
+        invoice.setEngraved27( invoiceDto.getEngraved27() );
         invoice.setExempt( invoiceDto.getExempt() );
         invoice.setIva105( invoiceDto.getIva105() );
         invoice.setIva21( invoiceDto.getIva21() );

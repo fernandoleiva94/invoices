@@ -7,8 +7,10 @@ import com.sevenb.invoices.dto.SearchInvoiceInputDto;
 import com.sevenb.invoices.exception.NotFoundException;
 import com.sevenb.invoices.mapper.InvoiceMapper;
 import com.sevenb.invoices.model.Invoice;
+import com.sevenb.invoices.model.InvoiceType;
 import com.sevenb.invoices.model.Provider;
 import com.sevenb.invoices.repository.InvoiceRepository;
+import com.sevenb.invoices.repository.InvoiceTypeRepository;
 import com.sevenb.invoices.repository.ProviderRepository;
 import com.sevenb.invoices.util.JWTExtractionUtil;
 import jakarta.persistence.EntityExistsException;
@@ -27,13 +29,15 @@ public class InvoiceServiceImpl implements InvoiceService {
     private final InvoiceRepository invoiceRepository;
     private final ProviderRepository providerRepository;
     private final JWTExtractionUtil jwtExtractionUtil;
+    private final InvoiceTypeRepository invoiceTypeRepository;
 
     public InvoiceServiceImpl(InvoiceRepository invoiceRepository,
                               ProviderRepository providerRepository,
-                              JWTExtractionUtil jwtExtractionUtil) {
+                              JWTExtractionUtil jwtExtractionUtil, InvoiceTypeRepository invoiceTypeRepository) {
         this.invoiceRepository = invoiceRepository;
         this.providerRepository = providerRepository;
         this.jwtExtractionUtil = jwtExtractionUtil;
+        this.invoiceTypeRepository = invoiceTypeRepository;
     }
 
     private final  InvoiceMapper invoiceMapper = Mappers.getMapper(InvoiceMapper.class);
@@ -43,8 +47,11 @@ public class InvoiceServiceImpl implements InvoiceService {
         BearerTokenPayloadDto  bearerTokenPayloadDto = jwtExtractionUtil.getPayloadFromToken(bearerToken);
         Invoice invoice = invoiceMapper.sourceToDestination(invoiceDto);
 
-      Provider providerOpt = providerRepository.findById(invoiceDto.getProvider()).orElseThrow();
+        Provider providerOpt = providerRepository.findById(invoiceDto.getProvider()).orElseThrow();
         invoice.setProvider(providerOpt);
+
+        InvoiceType invoiceType = invoiceTypeRepository.findById(invoiceDto.getInvoiceTypeId()).orElseThrow();
+        invoice.setInvoiceType(invoiceType);
 
         invoice.setCompany(bearerTokenPayloadDto.getCompany());
 
@@ -57,7 +64,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public List<Invoice> findAll() {
-        return (List<Invoice>) invoiceRepository.findAll();
+        return invoiceRepository.findAll();
     }
 
     @Override
@@ -77,7 +84,12 @@ public class InvoiceServiceImpl implements InvoiceService {
          Provider providerOpt = providerRepository.findById(invoiceDto.getProvider()).orElseThrow();
         updateInvoice.setProvider(providerOpt);
 
+        InvoiceType invoiceType = invoiceTypeRepository.findById(invoiceDto.getInvoiceTypeId()).orElseThrow();
+        updateInvoice.setInvoiceType(invoiceType);
+
         updateInvoice.setEngraved(invoiceDto.getEngraved());
+        updateInvoice.setEngraved105(invoiceDto.getEngraved105());
+        updateInvoice.setEngraved27(invoiceDto.getEngraved27());
         updateInvoice.setExempt(invoiceDto.getExempt());
         updateInvoice.setIva105(invoiceDto.getIva105());
         updateInvoice.setIva21(invoiceDto.getIva21());

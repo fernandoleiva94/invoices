@@ -1,5 +1,6 @@
 package com.sevenb.invoices.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +29,8 @@ public class Provider implements Serializable {
     private Boolean isAgreement = Boolean.FALSE;
     private Boolean isIibbExcept = Boolean.FALSE;
     private Boolean isMunicipalityExcept = Boolean.FALSE;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private Company company;
 
 

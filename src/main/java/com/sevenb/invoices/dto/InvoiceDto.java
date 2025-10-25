@@ -14,10 +14,13 @@ import java.time.LocalDate;
 public class InvoiceDto {
     private Long id;
     private Integer pointSale;
+    private Long invoiceTypeId;
     private Long number;
     private Long provider;
     private LocalDate date;
     private Double engraved;
+    private Double engraved105;
+    private Double engraved27;
     private Double exempt;
     private Double iva105;
     private Double iva21;
@@ -26,4 +29,5 @@ public class InvoiceDto {
     private Double taxedOthers;
     private Double municipality;
     private Boolean impacted;
+
 }

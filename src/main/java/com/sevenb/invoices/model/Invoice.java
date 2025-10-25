@@ -27,8 +27,9 @@ public class Invoice {
     private Provider provider;
     @Column(nullable = false)
     private LocalDate date;
-
     private Double engraved;
+    private Double engraved105;
+    private Double engraved27;
     private Double exempt;
     private Double iva105;
     private Double iva21;
@@ -39,6 +40,12 @@ public class Invoice {
     private Boolean impacted;
     @ManyToOne
     private Company company;
+
+    // relation to invoice_type
+    @ManyToOne
+    @JoinColumn(name = "invoice_type_id",
+            foreignKey = @ForeignKey(name = "fk_invoice_invoice_type"))
+    private InvoiceType invoiceType;
 
 
 }

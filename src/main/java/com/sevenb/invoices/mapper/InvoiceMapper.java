@@ -9,6 +9,7 @@ import org.mapstruct.Mapping;
 public interface InvoiceMapper {
     @Mapping(target = "company", ignore = true)
     @Mapping(target = "provider", ignore = true)
+    @Mapping(target = "invoiceType", ignore = true)
     Invoice sourceToDestination(InvoiceDto invoiceDto);
 
 }

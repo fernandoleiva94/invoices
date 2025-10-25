@@ -1,4 +1,5 @@
 com/sevenb/invoices/exception/BadRequestException.class
+com/sevenb/invoices/repository/InvoiceTypeRepository.class
 com/sevenb/invoices/config/SecurityConfig.class
 com/sevenb/invoices/repository/UserRepository.class
 com/sevenb/invoices/controller/InvoiceController.class
@@ -20,6 +21,7 @@ com/sevenb/invoices/config/WebConfig.class
 com/sevenb/invoices/model/User.class
 com/sevenb/invoices/model/Company.class
 com/sevenb/invoices/mapper/InvoiceMapperImpl.class
+com/sevenb/invoices/model/InvoiceType.class
 com/sevenb/invoices/repository/InvoiceRepository.class
 com/sevenb/invoices/model/Invoice.class
 com/sevenb/invoices/exception/UnauthorizedException.class
