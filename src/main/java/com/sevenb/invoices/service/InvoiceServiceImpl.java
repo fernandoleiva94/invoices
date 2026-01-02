@@ -98,6 +98,9 @@ public class InvoiceServiceImpl implements InvoiceService {
         updateInvoice.setTaxedOthers(invoiceDto.getTaxedOthers());
         updateInvoice.setMunicipality(invoiceDto.getMunicipality());
         updateInvoice.setImpacted(invoiceDto.getImpacted());
+        updateInvoice.setNonTaxableAmount(invoiceDto.getNonTaxableAmount());
+
+
         return invoiceRepository.save(updateInvoice);
     }
 

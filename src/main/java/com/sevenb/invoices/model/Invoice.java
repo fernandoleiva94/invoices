@@ -40,6 +40,7 @@ public class Invoice {
     private Boolean impacted;
     @ManyToOne
     private Company company;
+    private Double nonTaxableAmount;
 
     // relation to invoice_type
     @ManyToOne

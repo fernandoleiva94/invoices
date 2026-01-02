@@ -29,5 +29,7 @@ public class InvoiceDto {
     private Double taxedOthers;
     private Double municipality;
     private Boolean impacted;
+    private Double nonTaxableAmount;
+
 
 }
